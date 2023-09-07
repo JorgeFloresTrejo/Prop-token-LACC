@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import generarJWT from "../helpers/generarJWT.js";
 
 //Función para registrar
 const registrar = async (req, res) => {
@@ -54,12 +55,44 @@ const confirmar = async (req, res) => {
     }
 
 };
+ // Funcion para autenticar al usuario
+const autenticar = async (req, res) =>{
+    const { email, password } = req.body;
 
-const autenticar = (req, res) =>{
-    console.log(req.body);
-    res.json({msg: 'Autenticando'});
-}
+    //Comprobar si el usuario existe
+    const usuario = await User.findOne({email});
 
+    if(!usuario){
+        const error = new Error('Usuario no existe');
+        return res.status(403).json({msg: error.message})
+    }
+
+    //Comprobar si el usuario está confirmado
+    if(!usuario.confirmado){
+        const error = new Error('Tu cuenta no ha sido confirmada');
+        return res.status(403).json({msg: error.message});
+    }
+
+    //Revisar que la contraseña sea correcta
+    if(await usuario.comprobarPassword(password)){
+        //Autenticando
+        try {
+            const token = generarJWT(usuario.id); //Se le manda el id del usuario
+            res.json({ token });
+          } catch (error) {
+            console.error('Error al generar el token:', error);
+            res.status(500).json({ error: 'Error al generar el token' });
+          }
+
+    }else{
+        const error = new Error('La contraseña es incorrecta');
+        return res.status(403).json({msg: error.message});
+    }
+
+
+};
+
+//Exportando métodos
 export {
     registrar,
     perfil,
