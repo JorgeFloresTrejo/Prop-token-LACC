@@ -6,7 +6,7 @@ const login =  (req, res) => {
 
 //Función para registrar
 const registrar = async (req, res) => {
- const {email} = req.body;
+ const {email} = req.body; // req.body cuando se va a almacenar datos de un formulario
 
     //Prevenir usuarios duplicados
     //findOne permite buscar por los diferentes atributos de la BD, find se tre todos y findById se trae el registro por Id
@@ -35,8 +35,33 @@ const perfil = (req, res) => {
     res.json({msg: "Mostrando perfil"});
 };
 
+const confirmar = async (req, res) => {
+    const {token} = req.params; // res.params() para leer el parámetro que se le envía desde la ruta
+    const confirmarUsuario = await User.findOne({token}); // Buscar el usuario que tenga el token que se le pasa en la url
+   
+    if(!confirmarUsuario){
+        const error = new Error('Token no válido');
+        return res.status(404).json({msg: error.message});
+    }
+
+    try{
+
+        confirmarUsuario.token = null;
+        confirmarUsuario.confirmado = true;
+        await confirmarUsuario.save();
+
+        res.json({msg: "Usuario confirmado correctamente"});
+
+
+    }catch(error){
+        console.log(error.message);
+    }
+
+};
+
 export {
     login,
     registrar,
-    perfil
+    perfil,
+    confirmar
 }
