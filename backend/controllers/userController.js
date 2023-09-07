@@ -1,8 +1,4 @@
 import User from "../models/User.js";
- //Función para el login
-const login =  (req, res) => {
-    res.json({msg: "Pagina del login"});
-};
 
 //Función para registrar
 const registrar = async (req, res) => {
@@ -46,9 +42,9 @@ const confirmar = async (req, res) => {
 
     try{
 
-        confirmarUsuario.token = null;
-        confirmarUsuario.confirmado = true;
-        await confirmarUsuario.save();
+        confirmarUsuario.token = null;  //Eliminamos el token
+        confirmarUsuario.confirmado = true; //cambiamos el estado del confirmado
+        await confirmarUsuario.save();  //almacenamos los cambios
 
         res.json({msg: "Usuario confirmado correctamente"});
 
@@ -59,9 +55,14 @@ const confirmar = async (req, res) => {
 
 };
 
+const autenticar = (req, res) =>{
+    console.log(req.body);
+    res.json({msg: 'Autenticando'});
+}
+
 export {
-    login,
     registrar,
     perfil,
-    confirmar
+    confirmar,
+    autenticar
 }
