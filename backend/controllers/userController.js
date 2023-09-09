@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import generarJWT from "../helpers/generarJWT.js";
+import generarId from "../helpers/generarId.js";
 
 //Función para registrar
 const registrar = async (req, res) => {
@@ -94,10 +95,78 @@ const autenticar = async (req, res) =>{
 
 };
 
+// Función para generar el un token nuevo y guardarlo
+const olvidePassword = async (req, res)=>{  
+    const {email} = req.body;
+    //Buscamos en la base de datos el email que está enviando el usuario
+    const existeUsuario = await User.findOne({email});
+
+    // Verificamos que el correo exista
+    if(!existeUsuario){
+        const error = new Error('Usuario no existe');
+        return res.status(400).json({smg: error.message});
+    }
+
+    //Si existe el email en la bd se genera un nuevo token y se envía al correo
+    try{
+        existeUsuario.token = generarId();
+        existeUsuario.save();
+        res.json({msg: 'Hemos enviando un email con las instrucciones para restablecer su contraseña'})
+    }catch(error){
+        console.log(error.message);
+    }
+
+}
+
+// Comprobar que el token que envíe el usuario sea válido
+const comprobarToken =  async (req, res)=>{
+    const {token} = req.params; // con req.params se leen los datos de la url
+
+    //Verificamos que el token exista en la bd
+    const tokenValido = await User.findOne({token});
+
+    if(tokenValido){
+        res.json({msg: 'token valido y el usuario existe'});
+
+    }else{
+        const error = new Error('Token no valido');
+        return res.status(400).json({msg: error.message});
+    }
+
+
+    console.log(token);
+  }
+
+  //Una vez verificamos que el usuario existe y que el usuario envio el token correcto se le va a permitir cambiar su password
+const nuevoPassword = async (req, res)=>{ 
+    const {token} = req.params;
+    const {password} = req.body;
+
+    const usuario = await User.findOne({token});
+    if(!usuario){
+        const error = new Error('Hubo un error');
+        return res.status(400).json({msg : error.message});
+    };
+
+    try{
+        usuario.token = null;  //Una vez el usuario cambie el password se elimina el token almacenado
+        usuario.password = password; //Cambiar el password con el que escriba el usuario
+        usuario.save();
+        res.json({msg: 'password modificado correctamente'});
+    }catch(error){
+        console.log(error.message);
+    }
+
+ }
+
+
 //Exportando métodos
 export {
     registrar,
     perfil,
     confirmar,
-    autenticar
+    autenticar,
+    olvidePassword,
+    comprobarToken,
+    nuevoPassword
 }
