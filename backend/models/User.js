@@ -23,6 +23,11 @@ const userSchema = mongoose.Schema({
         unique: true,
         trim: true
     },
+    billetera:{
+        type: String,
+        default: null,
+        trim: true
+    },
     telefono: {
         type: String,
         default: null,

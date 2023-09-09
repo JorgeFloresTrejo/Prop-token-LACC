@@ -5,8 +5,8 @@ import generarJWT from "../helpers/generarJWT.js";
 const registrar = async (req, res) => {
  const {email} = req.body; // req.body cuando se va a almacenar datos de un formulario
 
-    //Prevenir usuarios duplicados
-    //findOne permite buscar por los diferentes atributos de la BD, find se tre todos y findById se trae el registro por Id
+    // Prevenir usuarios duplicados
+    // findOne permite buscar por los diferentes atributos de la BD, find se tre todos y findById se trae el registro por Id
     const existeUsuario = await User.findOne({email});
     if(existeUsuario){
        const error = new Error("Usuario ya registrado");
@@ -29,7 +29,9 @@ const registrar = async (req, res) => {
 
 //Función para mostrar perfin
 const perfil = (req, res) => {
-    res.json({msg: "Mostrando perfil"});
+    // console.log(req.usuario);  //Los datos del perfil para mostrar, se envían desde el middleware en el checkAuth: req.usuario
+    const {usuario} = req;
+    return res.json({perfil: usuario});
 };
 
 const confirmar = async (req, res) => {
