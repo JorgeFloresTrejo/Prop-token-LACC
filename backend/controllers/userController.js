@@ -14,7 +14,7 @@ const registrar = async (req, res) => {
        return res.status(400).json({msg: error.message});
     }
     try{
-        // Registrar un nuevo usuario
+        // Instanciamos el modelo User
         const user = new User(req.body);
         //save() método de mongoose para almacenar o actualizar objetos en la base de datos
         const registrarUser = await user.save(); 

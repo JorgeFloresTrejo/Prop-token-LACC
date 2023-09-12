@@ -1,7 +1,7 @@
 import { timeStamp } from "console";
 import mongoose from "mongoose";
 
-propiedadSchema = mongoose.Schema({
+const propiedadSchema = mongoose.Schema({
     descripcion:{
         type: String,
         required: true,
