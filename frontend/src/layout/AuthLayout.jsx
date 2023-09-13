@@ -7,9 +7,10 @@ const AuthLayout = () => {
   return (
     <>
 
-        <h1>Desde auth layout</h1>
+        <main className="container mx-auto  md:grid md:grid-cols-2 mt-2 gap-16 p-7">
         {/*Outlet Espacio reservado para el contenido que forma parte de este layout */}
         <Outlet />  
+        </main>
 
     </>
   )
