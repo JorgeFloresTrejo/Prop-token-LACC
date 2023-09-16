@@ -78,7 +78,7 @@ const eliminarPropiedad = async (req, res) => {
     if(!propiedad){
         return res.status(404).json({msg: 'No encontrado'});
     }
-
+    
     if(propiedad.user._id.toString() !== req.usuario._id.toString()){
         return res.json({msg: 'Acción no válida'}); 
     }
