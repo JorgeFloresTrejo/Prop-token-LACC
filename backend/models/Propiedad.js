@@ -1,33 +1,60 @@
 import { timeStamp } from "console";
 import mongoose from "mongoose";
+import { cargarImagen, autorizar } from "../middleware/authDrive.cjs";
+import path from "path";
 
-const propiedadSchema = mongoose.Schema({
-    descripcion:{
+const propiedadSchema = mongoose.Schema(
+  {
+    descripcion: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    ubicacion: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    valor: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
+    imagenUrl: [
+      {
         type: String,
         required: true,
-        trim: true
-    },
-    ubicacion:{
-        type: String,
-        required: true,
-        trim: true
-    },
-    valor:{
-        type: Number,
-        required: true,
-        trim: true
-    },
-    imagenUrl:{
-        type: String,
-        required: true
-    },
+      },
+    ],
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
+  },
+  timeStamp(true)
+);
 
-}, timeStamp(true));
-
+//Subir imagenes antes de guardar propiedad
+propiedadSchema.pre("save", async function (next) {
+  try {
+    const authClient = await autorizar();
+    const urls = [];
+    for (let i = 0; i < this.imagenUrl.length; i++) {
+      const imagenBuffer = this.imagenUrl[i];
+      const nombreImagen = path.basename(imagenBuffer);
+      const imagenUrl = await cargarImagen(
+        authClient,
+        imagenBuffer,
+        nombreImagen
+      );
+      urls.push(imagenUrl);
+    }
+    this.imagenUrl = urls;
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 const Propiedad = mongoose.model("Propiedad", propiedadSchema);
 
 export default Propiedad;
