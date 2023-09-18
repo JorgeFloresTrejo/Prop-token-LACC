@@ -1,10 +1,11 @@
 import User from "../models/User.js";
 import generarJWT from "../helpers/generarJWT.js";
 import generarId from "../helpers/generarId.js";
+import emailRegistro from "../helpers/emailRegistro.js";
 
 //Función para registrar
 const registrar = async (req, res) => {
-  const { email } = req.body; // req.body cuando se va a almacenar datos de un formulario
+  const { email, nombre} = req.body; // req.body cuando se va a almacenar datos de un formulario
 
   // Prevenir usuarios duplicados
   // findOne permite buscar por los diferentes atributos de la BD, find se tre todos y findById se trae el registro por Id
@@ -18,6 +19,10 @@ const registrar = async (req, res) => {
     const user = new User(req.body);
     //save() método de mongoose para almacenar o actualizar objetos en la base de datos
     const registrarUser = await user.save();
+
+    //Envío del email
+    emailRegistro({email, nombre, token: registrarUser.token});
+
 
     res.json({ registrarUser });
   } catch (error) {
