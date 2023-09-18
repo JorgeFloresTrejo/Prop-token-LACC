@@ -12,7 +12,7 @@ const Login = () => {
                 Inicia sesión
             </h1>
               
-            <form action="" className="mt-5">
+            <form action="/Inicio" className="mt-5">
               <div className="my-7">
                 <label htmlFor="email"  className="uppercase text-gray-700 text-2xl block font-bold"> email </label>
                 <input type="email" placeholder="Email de registro" id="email" className="border w-full p-2 mt-3 bg-gray-200 rounded-xl"/>

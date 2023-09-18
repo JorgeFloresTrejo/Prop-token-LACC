@@ -2,18 +2,22 @@
 // tambien me mostrará el contenido del subcomponente, osea del Login y los
 import { Outlet } from 'react-router-dom'; 
 
-const AuthLayout = () => {
+
+const AdminLayout = () => {
 
   return (
     <>
 
-        <main className="container mx-auto  md:grid md:grid-cols-2 mt-2 gap-16 p-7 ">
+
+        <main>
         {/*Outlet Espacio reservado para el contenido que forma parte de este layout */}
         <Outlet />  
         </main>
+
+
 
     </>
   )
 }
 
-export default AuthLayout;
+export default AdminLayout;
