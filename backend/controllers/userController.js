@@ -37,6 +37,7 @@ const perfil = (req, res) => {
   return res.json({ perfil: usuario });
 };
 
+//Función para confirmar la cuenta
 const confirmar = async (req, res) => {
   const { token } = req.params; // res.params() para leer el parámetro que se le envía desde la ruta
   const confirmarUsuario = await User.findOne({ token }); // Buscar el usuario que tenga el token que se le pasa en la url

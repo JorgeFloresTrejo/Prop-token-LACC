@@ -17,7 +17,7 @@ dotenv.config();
 conectarDB();
 
  //Configuración del Cors - codigo en el paquete
-const dominioPermitidos = ["http://localhost:5173"];
+const dominioPermitidos = [process.env.FRONTEND_URL];
 const corsOpciones = {
   origin: function(origin, callback){
     // Si la url del frontend, donde se realiza la petición hacia la api esta en la lista de dominios permitidos
