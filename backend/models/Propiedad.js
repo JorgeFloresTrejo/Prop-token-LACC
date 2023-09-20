@@ -35,26 +35,6 @@ const propiedadSchema = mongoose.Schema(
 );
 
 //Subir imagenes antes de guardar propiedad
-propiedadSchema.pre("save", async function (next) {
-  try {
-    const authClient = await autorizar();
-    const urls = [];
-    for (let i = 0; i < this.imagenUrl.length; i++) {
-      const imagenBuffer = this.imagenUrl[i];
-      const nombreImagen = path.basename(imagenBuffer);
-      const imagenUrl = await cargarImagen(
-        authClient,
-        imagenBuffer,
-        nombreImagen
-      );
-      urls.push(imagenUrl);
-    }
-    this.imagenUrl = urls;
-    next();
-  } catch (error) {
-    next(error);
-  }
-});
 const Propiedad = mongoose.model("Propiedad", propiedadSchema);
 
 export default Propiedad;

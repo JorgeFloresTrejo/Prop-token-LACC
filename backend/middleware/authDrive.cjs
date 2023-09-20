@@ -20,7 +20,7 @@ async function autorizar() {
   return jwtClient;
 }
 
-async function cargarImagen(authClient, imagenBuffer, imagenNombre) {
+async function cargarImagen(authClient, imagenNombre) {
   return new Promise((resolve, rejects) => {
     const drive = google.drive({ version: "v3", auth: authClient });
     let fileMetaData = {
@@ -38,18 +38,18 @@ async function cargarImagen(authClient, imagenBuffer, imagenNombre) {
 
     //Ruta del archivo temporal
     const rutaArchivo = path.join(direccionTemporal, imagenNombre);
-
+    console.log("Ruta del archivo: ", rutaArchivo);
     //Escribir el búfer en el archivo temporal
-    fs.writeFileSync(rutaArchivo, imagenBuffer);
+    //fs.writeFileSync(rutaArchivo, imagenBuffer);
 
-    // const imagenStream = fs.createReadStream(rutaArchivo);
+    const imagenStream = fs.createReadStream(rutaArchivo);
 
     drive.files.create(
       {
         resource: fileMetaData,
         media: {
           //body: imagenBuffer, //Dirección de la imágenes
-          body: fs.createReadStream(rutaArchivo),
+          body: imagenStream,
           mimeType: ["image/jpg", "image/png"],
         },
         fields: "id",
@@ -65,7 +65,7 @@ async function cargarImagen(authClient, imagenBuffer, imagenNombre) {
 
           if (file.data.id) {
             const imagenUrl = `https://drive.google.com/uc?id=${file.data.id}`;
-            //console.log(imagenUrl);
+            console.log(imagenUrl);
             resolve(imagenUrl);
           } else {
             rejects("El campo 'id' no esta presente");

@@ -7,7 +7,7 @@ import express from "express";
 import cors from "cors"; //Cors sirven para proteger la api
 import passport from "passport";
 import express_session from "express-session";
-import { POST } from "./routes/imagenesRoutes.js";
+import router from "./routes/imagenesRoutes.js";
 
 const app = express();
 app.use(express_session({ secret: "cats" }));
@@ -38,7 +38,9 @@ app.use(cors(corsOpciones));
 app.use("/api", userRoutes);
 app.use("/api/propiedades", PropiedadRoutes);
 app.use("/", googleRoutes);
-app.use("/subir", POST);
+
+//Subir imagenes
+app.use("/api", router);
 
 // Puerto en el que funcionará
 const PORT = process.env.PORT || 4000;
