@@ -207,7 +207,11 @@ const Inicio = () => {
         <MasInmueble imagen={Casa2} ubicacion="Chalatenago" precio="50,000" />
         <MasInmueble imagen={Casa2} ubicacion="Chalatenago" precio="50,000" />
       </div>
-      <FaqComponent />
+
+        
+      <FaqComponent/>
+      
+      
     </>
   );
 };

@@ -1,6 +1,9 @@
 /* Estilos para el menú desplegable en pantalla principal */
 .header-container{
   z-index: 2; /* Un valor mayor que el z-index del carousel */
+  border-radius: 5px;
+  border-color: #ffffff;
+  border-width: 1px;
 }
 .links {
   display: none;

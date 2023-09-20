@@ -1,19 +1,30 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import AuthLayout from "./layout/AuthLayout";
-import AdminLayout from "./layout/adminLayout";
 import Login from "./components/login/Login";
 import Registrar from "./components/login/Registrar";
 import OlvidePassword from "./components/login/OlvidePassword";
 import ConfirmarCuenta from "./components/login/ConfirmarCuenta";
 
 
-import Footer from "./components/Footer/Footer";
+import AdminLayout from "./layout/adminLayout";
+
+
+import InicioLayout from "./layout/InicioLayout";
 import Inicio from "./components/Inicio/Inicio";
+import MasInmueble from "./components/Inicio/MasInmueble/MasInmueble";
+import FaqComponent from "./components/Inicio/PreguntasFrecuente/Pregunta";
+
+
+
+import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal"
 import Header from "./components/Header/Header"
 import Inmueble from "./components/Inmuebles/Inmueble";
-import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal";
-import InicioLayout from "./layout/InicioLayout";
 import SessionMenu from "./components/SessionMenu/SessionMenu";
+
+
+
+
+
 function App() {
 
   return (
@@ -30,15 +41,9 @@ function App() {
             {/* Vistas que no necesitan loggearse */}
             <Route path="/" element={<InicioLayout />}>
               <Route index element={<Inicio/>}/>
-              <Route path="inmuebles" element={<InmuebleFinal/>}/>
+              <Route path="FaqComponent" element={<FaqComponent/>} /> 
             </Route>
 
-            {/**Vistas que necesitan logearse */}
-            <Route path="inicio" element={<AdminLayout/>}>
-                <Route index element={<SessionMenu/>} />
-            </Route>
-
-            
 
           </Routes>
         </BrowserRouter>

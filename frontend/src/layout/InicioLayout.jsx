@@ -2,19 +2,22 @@
 // tambien me mostrará el contenido del subcomponente, osea del Login y los
 import { Outlet } from 'react-router-dom'; 
 import Header from '../components/Header/Header';
+import NavBar from '../components/Navbars/Navbars';
 import Footer from '../components/Footer/Footer';
+
+
 
 const InicioLayout = () => {
 
   return (
     <>
-    <Header/>
+      <NavBar/>
         <main>
         {/*Outlet Espacio reservado para el contenido que forma parte de este layout */}
         <Outlet />  
         </main>
-        
-        <Footer/>      
+        <Footer/> 
+          
     </>
   )
 }
