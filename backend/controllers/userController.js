@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import generarJWT from "../helpers/generarJWT.js";
 import generarId from "../helpers/generarId.js";
 import emailRegistro from "../helpers/emailRegistro.js";
+import emailOlvidePassword from "../helpers/emailOlvidePassword.js";
 
 //Función para registrar
 const registrar = async (req, res) => {
@@ -94,19 +95,28 @@ const autenticar = async (req, res) => {
 // Función para generar el un token nuevo y guardarlo
 const olvidePassword = async (req, res) => {
   const { email } = req.body;
+
   //Buscamos en la base de datos el email que está enviando el usuario
   const existeUsuario = await User.findOne({ email });
 
   // Verificamos que el correo exista
   if (!existeUsuario) {
     const error = new Error("Usuario no existe");
-    return res.status(400).json({ smg: error.message });
+    return res.status(400).json({ msg: error.message });
   }
 
   //Si existe el email en la bd se genera un nuevo token y se envía al correo
   try {
     existeUsuario.token = generarId();
     existeUsuario.save();
+
+    //Enviar el email con las instrucciones para cambiar la contraseña
+    emailOlvidePassword({
+      email,
+       nombre: existeUsuario.nombre,
+        token: existeUsuario.token
+      });
+
     res.json({
       msg: "Hemos enviando un email con las instrucciones para restablecer su contraseña",
     });
