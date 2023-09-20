@@ -6,11 +6,14 @@ import OlvidePassword from "./components/login/OlvidePassword";
 import ConfirmarCuenta from "./components/login/ConfirmarCuenta";
 import NuevoPassword from "./components/login/nuevoPassword";
 
+import { AuthProvider } from "./context/AuthProvider"; 
+
 function App() {
 
   return (
     <>
         <BrowserRouter>
+        <AuthProvider>
           <Routes>
             <Route path="/" element={<AuthLayout />}>
                 <Route index element={< Login />} /> 
@@ -18,15 +21,9 @@ function App() {
                 <Route path="olvide-password" element={<OlvidePassword />} /> 
                 <Route path="olvide-password/:token" element={<NuevoPassword />} /> 
                 <Route path="confirmar/:id" element={<ConfirmarCuenta />} /> 
-            </Route>
-
-            {/* Asi seguría el orden de las rutas para cuando acceda */}
-            {/* <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={< Perfil />} /> 
- 
-            </Route> */}
-            
+            </Route>              
           </Routes>
+          </AuthProvider>  
         </BrowserRouter>
     </>
   )

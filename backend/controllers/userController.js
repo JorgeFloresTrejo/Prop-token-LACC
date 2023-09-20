@@ -35,7 +35,7 @@ const registrar = async (req, res) => {
 const perfil = (req, res) => {
   // console.log(req.usuario);  //Los datos del perfil para mostrar, se envían desde el middleware en el checkAuth: req.usuario
   const { usuario } = req;
-  return res.json({ perfil: usuario });
+  return res.json({ usuario });
 };
 
 //Función para confirmar la cuenta
