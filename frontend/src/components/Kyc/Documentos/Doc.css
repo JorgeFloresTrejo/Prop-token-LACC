@@ -1,0 +1,104 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    /* Cambia el color de fondo según tus preferencias */
+}
+
+.image-card-container {
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.image-card1,
+.image-card2,
+.image-card3 {
+    background-color: #fff;    /* Cambia el color de fondo de los contenedores según tus preferencias */
+    border: 1px solid #ccc;
+    box-shadow: 10px 10px 10px #af5be31a; /* Sombra suave */
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.image-card1 .image-preview1,
+.image-card2 .image-preview2,
+.image-card3 .image-preview3 {
+  height: 400px; /* Establece una altura fija para la imagen y el botón */
+}
+
+
+.image-card1 p,
+.image-card2 p,
+.image-card3 p {
+    margin: 10px 0;
+}
+
+.upload-button1,
+.upload-button2,
+.upload-button3 {
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: auto;    /* Agrega un pequeño espacio entre el botón y la imagen */
+    width: auto;
+    text-align: center;
+}
+
+
+
+.image-preview1 img,
+.image-preview2 img,
+.image-preview3 img {
+    max-width: 100%;
+    /* Asegura que la imagen se ajuste al contenedor */
+    max-height: 100%;
+}
+
+
+.upload-button1:hover,
+.upload-button2:hover,
+.upload-button3:hover {
+    background-color: #0056b3;
+    /* Cambia el color de fondo del botón al pasar el cursor */
+}
+
+.image-preview1,
+.image-preview2,
+.image-preview3 {
+    margin-top: 10px;
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    /* Cambia el color del botón según tus preferencias */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    /* Cambia el color de fondo del botón al pasar el cursor */
+}

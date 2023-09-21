@@ -13,6 +13,9 @@ import Inmueble from "./components/Inmuebles/Inmueble";
 import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal";
 import InicioLayout from "./layout/InicioLayout";
 import SessionMenu from "./components/SessionMenu/SessionMenu";
+import InicioKyc from "./components/Kyc/InicioKyc/Iniciokyc";
+import Financiero from "./components/Kyc/Financiero/Financiero";
+
 function App() {
   return (
     <>
@@ -29,11 +32,15 @@ function App() {
           <Route path="/" element={<InicioLayout />}>
             <Route index element={<Inicio />} />
             <Route path="inmuebles" element={<InmuebleFinal />} />
+            <Route path="info" element={<InicioKyc/>} />
+            <Route path="financiero" element={<Financiero />} />
           </Route>
 
           {/**Vistas que necesitan logearse */}
           <Route path="inicio" element={<AdminLayout />}>
             <Route index element={<SessionMenu />} />
+          
+           
           </Route>
         </Routes>
       </BrowserRouter>
