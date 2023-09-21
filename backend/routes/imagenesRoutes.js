@@ -17,20 +17,22 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Ruta para subir la imagen a Google Drive
-router.post("/upload", upload.single("file"), async (req, res) => {
+router.post("/upload", upload.array("files"), async (req, res) => {
   try {
     // Obtener un cliente autorizado de Google Drive
     const authClient = await autorizar();
-
-    console.log("Hola soy buffer: ", req.file.buffer);
-    console.log("Hola soy ", req.file.filename);
-    console.log(req.file);
+    console.log(req.body);
+    const imageUrls = [];
     console.log(req.files);
     // Cargar la imagen en Google Drive
-    const imagenUrl = await cargarImagen(authClient, req.file.filename);
+    for (const file of req.files) {
+      const imageUrl = await cargarImagen(authClient, file.filename);
+      imageUrls.push(imageUrl);
+      console.log(imageUrl);
+    }
 
     // Aquí puedes devolver la URL de la imagen almacenada en Google Drive en la respuesta
-    res.json({ imageUrl: imagenUrl });
+    res.json({ imageUrl: imageUrls });
   } catch (error) {
     console.error("Error al subir la imagen a Google Drive:", error);
     res.status(500).json({ error: "Error al subir la imagen a Google Drive" });

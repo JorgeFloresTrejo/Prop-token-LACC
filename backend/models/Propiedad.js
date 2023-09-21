@@ -1,7 +1,5 @@
 import { timeStamp } from "console";
 import mongoose from "mongoose";
-import { cargarImagen, autorizar } from "../middleware/authDrive.cjs";
-import path from "path";
 
 const propiedadSchema = mongoose.Schema(
   {

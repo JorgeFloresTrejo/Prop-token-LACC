@@ -6,10 +6,10 @@ const CrearInmueble = () => {
   const [descripcion, setDescripcion] = useState("");
   const [ubicacion, setUbicacion] = useState("");
   const [valor, setValor] = useState("");
-  const [imagenUrl, setImagenUrl] = useState();
-  const [file, setFile] = useState("");
+  const [imagenUrl, setImagenUrls] = useState([]);
+  const [file, setFile] = useState([]);
   const [token, setToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MDk5ZWFjMGQxNmY1OWQwN2I1OTRhMSIsImlhdCI6MTY5NTEzNTMyOSwiZXhwIjoxNjk3NzI3MzI5fQ.C9bI9Aoyqg_2cHheDI8TJgTvc8mMYBOOEEHtrk1uN18"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGI5YjczZjBhOGZmZmI3ZGU1MDA2MiIsImlhdCI6MTY5NTI1OTUzNywiZXhwIjoxNjk3ODUxNTM3fQ.iPhcH3DxgXSabMjVztaZZOVdMftPN0fX-F_F_v_VwiE"
   );
   const urlBackend = "http://localhost:4000/api/propiedades";
 
@@ -22,8 +22,14 @@ const CrearInmueble = () => {
   };
   //Subir la imagen al drive
   const upload = async () => {
+    console.log("Array: ", file);
     const formData = new FormData();
-    formData.append("file", file);
+
+    for (let i = 0; i < file.length; i++) {
+      formData.append("files", file[i]);
+    }
+    console.log(...formData);
+
     try {
       Swal.fire({
         title: "Guardando...",
@@ -38,20 +44,23 @@ const CrearInmueble = () => {
         "http://localhost:4000/api/upload",
         formData
       );
-
       //Verificar si la respuesta contiene la Url de la imagen
       if (response.data && response.data.imageUrl) {
+        const urls = response.data.imageUrl;
+        //setImagenUrls(urls);
+        console.log("urls: ", urls);
         //Crear las credenciales
         const headers = {
           Authorization: `Bearer ${token}`,
         };
 
+        // console.log("ImageUrl", imagenUrl);
         //Crear una propiedad
         const nuevaPropiedad = {
           descripcion,
           ubicacion,
           valor,
-          imagenUrl: response.data.imageUrl,
+          imagenUrl: urls,
         };
 
         await axios.post(urlBackend, nuevaPropiedad, { headers });
@@ -60,7 +69,7 @@ const CrearInmueble = () => {
         setDescripcion("");
         setUbicacion("");
         setValor("");
-        setImagenUrl("");
+        setFile("");
 
         // Cerrar el mensaje de carga
         Swal.close();
@@ -184,12 +193,12 @@ const CrearInmueble = () => {
               id="dropzone-file"
               type="file"
               className="hidden"
-              name="imagenUrl"
+              name="file"
               accept="image/*"
               multiple
               required={true}
               onChange={(e) => {
-                setFile(e.target.files[0]);
+                setFile(e.target.files);
               }}
             />
           </label>
