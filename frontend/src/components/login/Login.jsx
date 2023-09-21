@@ -69,7 +69,7 @@ const Login = () => {
             ¿No tienes una cuenta? Registrate
           </Link>
           <Link
-            to="/olvide-password"
+            to="/login/olvide-password"
             className="block text-center my-5 text-gray-600"
           >
             Olvide mi contraseña

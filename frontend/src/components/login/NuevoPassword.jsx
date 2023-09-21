@@ -100,7 +100,7 @@ const NuevoPassword = () => {
             
             )}
 
-            {passwordModificado &&  <Link to="/" className="block text-center my-5 text-gray-600"> Inicia sesión </Link>}
+            {passwordModificado &&  <Link to="/login" className="block text-center my-5 text-gray-600"> Inicia sesión </Link>}
         </div> 
     </>
   )

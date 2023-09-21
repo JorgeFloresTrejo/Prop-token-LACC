@@ -96,8 +96,8 @@ function Registrar() {
             </form>
 
             <nav className="mt-5 lg:flex justify-between">
-              <Link to="/" className="block text-center my-5 text-gray-600">¿Ya tienes una cuenta? Inicia sesión</Link>
-              <Link to="/olvide-password" className="block text-center my-5 text-gray-600">Olvide mi contraseña</Link>
+              <Link to="/login" className="block text-center my-5 text-gray-600">¿Ya tienes una cuenta? Inicia sesión</Link>
+              <Link to="/login/olvide-password" className="block text-center my-5 text-gray-600">Olvide mi contraseña</Link>
             </nav>
 
         </div>

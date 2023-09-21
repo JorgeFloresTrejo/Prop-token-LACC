@@ -57,7 +57,7 @@ const ConfirmarCuenta = () => {
 
           {/* Si la cuenta está confirmada mostramos un link para que pueda acceder */}
          {cuentaConfirmada && (
-            <Link to="/" className="block text-center my-5 text-gray-600"> Inicia sesión</Link>
+            <Link to="/login" className="block text-center my-5 text-gray-600"> Inicia sesión</Link>
          )}
 
         </div>
