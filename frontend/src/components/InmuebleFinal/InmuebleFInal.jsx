@@ -12,8 +12,6 @@ const InmuebleFinal = () => {
   return (
     <>
       <div className="inmueble-inmueble">
-        <h2>Lista destacadas</h2>
-        <h3>Una colección seleccionada de nuestras propiedades</h3>
         <div className="inmueble-inmueble_card">
           <Inmueble
             imagen={Casa1}

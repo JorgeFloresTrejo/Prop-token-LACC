@@ -1,7 +1,4 @@
-.facilidad-facilidad h6 {
-  text-align: center;
-  font-size: 16px;
-}
+
 
 .facilidad-card-flex {
   max-width: 1050px;
@@ -15,10 +12,25 @@
 
 .facilidad-facilidad-card {
   width: 225px;
-  height: 250px;
+  height: 350px;
+  margin: 20px auto 30px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: rgba(3, 147, 250, 0.079); 
+}
+
+.facilidad-facilidad-card h5{
+  font-size: 20px;
+  color: black;
+}
+.facilidad-facilidad-card img{
+  width: 100px;
+  height: 100px;
   margin: 0 auto 30px;
   padding: 10px;
   text-align: center;
   border: 1px solid rgb(150, 131, 131);
   border-radius: 20px;
+  background-color: aliceblue;
 }

@@ -24,7 +24,7 @@ import MasInmueble from "./MasInmueble/MasInmueble";
 import "./Inicio.css";
 import Imagen from "./ImagenHeader/Imagen";
 import Imgdeposito from "./ImagenDeposito/Imgdeposito";
-import FaqComponent from "./PreguntasFrecuente/Pregunta";
+import FaqComponent from "./Fqa/Pregunta";
 
 const Inicio = () => {
   return (
@@ -72,10 +72,15 @@ const Inicio = () => {
           </p>
         </div>
       
-      <div className="inmueble-inmueble">
-        <h2>Lista destacadas</h2>
-        <h3>Una colección seleccionada de nuestras propiedades</h3>
-        <div className="inmueble-inmueble_card">
+      <div className="inmueble-inmueble flex">
+        
+        <div className="inmueble-inmueble_card w-full mx-8">
+
+        <div class="w-full p-2 text-center bg-blue-400 rounded-lg ">
+        <h2 class="text-white shadow-lg ">Lista destacadas</h2>
+        <h3 class="text-white text-shadow-md">Una colección seleccionada de nuestras propiedades</h3>
+        </div>
+        
           <Inmueble
             imagen={Casa1}
             ubicacion="El cuco, San Miguel"
@@ -172,14 +177,20 @@ const Inicio = () => {
             renta="1200"
             extencion="1220"
           />
-        </div>
-        <a href="/inmuebles" className="ver-listado">
+          <div class="w-full p-2 text-center  rounded-lg ">
+          <a href="/inmuebles" className="ver-listado">
           Ver listado
         </a>
+          </div>
+        </div>
+        
       </div>
 
-      <div className="facilidad-facilidad">
-        <h6>¿Qué tan fácil es invertir?</h6>
+      <div className="facilidad-facilidad my-8">
+      <div class="w-full p-2 text-center  rounded-lg my-8">
+      <h6>¿Qué tan fácil es invertir?</h6>
+      </div>
+        
         <div className="facilidad-card-flex">
           <Facilidad
             imagen={Uno}
@@ -207,7 +218,7 @@ const Inicio = () => {
         <MasInmueble imagen={Casa2} ubicacion="Chalatenago" precio="50,000" />
         <MasInmueble imagen={Casa2} ubicacion="Chalatenago" precio="50,000" />
       </div>
-      <FaqComponent />
+      <FaqComponent/>
     </>
   );
 };

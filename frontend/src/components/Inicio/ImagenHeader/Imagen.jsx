@@ -5,7 +5,7 @@ import hede from "../../../images/header.png";
 const Imagen = () => {
   return (
     <div className="imaheader">
-      <div className="image-container">
+      <div className="image-container ">
         <img src={hede} alt="header" className="scalable-image" />
         <h1 className="image-text">
           Tokenizacion <br />

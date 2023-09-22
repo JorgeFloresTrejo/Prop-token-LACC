@@ -13,6 +13,8 @@ import Inmueble from "./components/Inmuebles/Inmueble";
 import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal";
 import InicioLayout from "./layout/InicioLayout";
 import SessionMenu from "./components/SessionMenu/SessionMenu";
+
+
 function App() {
   return (
     <>
@@ -32,7 +34,7 @@ function App() {
           </Route>
 
           {/**Vistas que necesitan logearse */}
-          <Route path="inicio" element={<AdminLayout />}>
+          <Route path="Inicio" element={<AdminLayout />}>
             <Route index element={<SessionMenu />} />
           </Route>
         </Routes>
