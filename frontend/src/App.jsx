@@ -14,6 +14,7 @@ import Inicio from "./components/Inicio/Inicio";
 import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal";
 import InicioLayout from "./layout/InicioLayout";
 import SessionMenu from "./components/SessionMenu/SessionMenu";
+
 function App() {
   return (
     <>
