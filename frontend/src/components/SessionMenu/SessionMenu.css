@@ -1,0 +1,172 @@
+/* Estilos para el contenedor principal */
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para el primer div arriba */
+.primer-div {
+  height: 50px;
+  background: linear-gradient(
+    to right top,
+    rgb(254, 254, 254),
+    rgb(215, 236, 250),
+    rgba(0, 136, 255, 0.721)
+  );
+  padding: 20px;
+}
+
+.connection-wallet {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  float: right;
+  width: 370px;
+}
+
+/* Conect wallet */
+.connect-wallet {
+  margin: 0 auto;
+}
+
+.metamask-connect {
+  display: inline-block;
+  width: 180px;
+  height: 38px;
+  border-radius: 10px;
+  background-image: url("./../../images/metamask-logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+.metamask-connect i {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.terminos {
+  color: white;
+}
+
+.loga {
+  position: relative;
+  float: left;
+  display: flex;
+  align-items: flex-start;
+  width: 10vw;
+  align-items: center;
+}
+
+.loga img {
+  position: absolute;
+  top: -10px;
+  margin-left: 8px;
+  height: 10vh;
+}
+
+/* Estilos para el texto del logo */
+.loga h3 {
+  margin: 8px 130px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.loga span {
+  color: blue;
+}
+
+/* Estilos para el segundo div */
+.segundo-div {
+  height: 85vh;
+  width: 20%; /* Cambia el ancho al 40% para dejar espacio al tercer div */
+  float: left; /* Hace que el segundo div flote a la izquierda */
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    to right top,
+    rgb(254, 254, 254),
+    rgb(141, 208, 253),
+    rgba(185, 217, 246, 0.721),
+    rgb(254, 254, 254),
+    rgb(141, 208, 253),
+    rgba(185, 217, 246, 0.721)
+  );
+  background-position: right;
+  background-size: 95% 100%;
+  background-repeat: no-repeat;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.texto-menu {
+  color: white;
+}
+
+.menu-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: linear-gradient(
+    to right top,
+    rgb(254, 254, 254),
+    rgb(141, 208, 253),
+    rgba(0, 136, 255, 0.721)
+  );
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  border-radius: 8px;
+}
+.menu-button:hover {
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+/* Estilos para el botón cuando se le hace clic (ratón presionado) */
+.menu-button:active {
+  transform: scale(0.95); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
+  box-shadow: none; /* Elimina la sombra cuando se hace clic */
+}
+
+.mostrar-botones-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estilos para el tercer div */
+.tercer-div {
+  height: 79vh;
+  width: 98.5vw; /* Cambia el ancho al 60% para dejar espacio al segundo div */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Añade margen entre los divs si lo deseas */
+.segundo-div, .tercer-div {
+  margin-right: 20px; /* Añade margen entre los divs */
+}
+
+.wallet-detalles {
+  position: relative;
+  border: 1px solid slateblue;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.wallet-detalles p {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  /* Estilos para pantallas pequeñas */
+}

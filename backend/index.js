@@ -18,7 +18,7 @@ dotenv.config();
 conectarDB();
 
 //Configuración del Cors - codigo en el paquete
-const dominioPermitidos = ["http://localhost:5173"];
+const dominioPermitidos = [process.env.FRONTEND_URL];
 const corsOpciones = {
   // origin: "http://localhost:5173",
   // methods: "GET,POST",
