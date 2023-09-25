@@ -1,0 +1,134 @@
+{
+  "hash": "3857bc6a",
+  "browserHash": "58ec3287",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "54db91c5",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "40d61fe0",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "56d16cb1",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "5ce69eef",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "1e7873e8",
+      "needsInterop": false
+    },
+    "web3": {
+      "src": "../../node_modules/web3/lib/esm/index.js",
+      "file": "web3.js",
+      "fileHash": "90c0021e",
+      "needsInterop": false
+    },
+    "@web3modal/react": {
+      "src": "../../node_modules/@web3modal/react/dist/index.js",
+      "file": "@web3modal_react.js",
+      "fileHash": "9e7a4b57",
+      "needsInterop": false
+    },
+    "@web3modal/ethereum": {
+      "src": "../../node_modules/@web3modal/ethereum/dist/index.js",
+      "file": "@web3modal_ethereum.js",
+      "fileHash": "f4c29dc3",
+      "needsInterop": false
+    },
+    "wagmi": {
+      "src": "../../node_modules/wagmi/dist/index.js",
+      "file": "wagmi.js",
+      "fileHash": "a40acfc2",
+      "needsInterop": false
+    },
+    "wagmi/chains": {
+      "src": "../../node_modules/wagmi/dist/chains.js",
+      "file": "wagmi_chains.js",
+      "fileHash": "06b5d9c6",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "dist-5QZPKFL7": {
+      "file": "dist-5QZPKFL7.js"
+    },
+    "ccip-ETD2JBEO": {
+      "file": "ccip-ETD2JBEO.js"
+    },
+    "secp256k1-PR5APCKM": {
+      "file": "secp256k1-PR5APCKM.js"
+    },
+    "dist-F3BFUVM3": {
+      "file": "dist-F3BFUVM3.js"
+    },
+    "chunk-IHSGR6EM": {
+      "file": "chunk-IHSGR6EM.js"
+    },
+    "dist-XJJII5VI": {
+      "file": "dist-XJJII5VI.js"
+    },
+    "chunk-TSMIGI7S": {
+      "file": "chunk-TSMIGI7S.js"
+    },
+    "index.es-E6UK33MU": {
+      "file": "index__es-E6UK33MU.js"
+    },
+    "chunk-JR7JCL5H": {
+      "file": "chunk-JR7JCL5H.js"
+    },
+    "chunk-7TZ33SFM": {
+      "file": "chunk-7TZ33SFM.js"
+    },
+    "chunk-UNDYDC4Y": {
+      "file": "chunk-UNDYDC4Y.js"
+    },
+    "chunk-ZKD3A47W": {
+      "file": "chunk-ZKD3A47W.js"
+    },
+    "chunk-DZRJWR3Y": {
+      "file": "chunk-DZRJWR3Y.js"
+    },
+    "chunk-I5QNE62M": {
+      "file": "chunk-I5QNE62M.js"
+    },
+    "chunk-ZJFNPFZ5": {
+      "file": "chunk-ZJFNPFZ5.js"
+    },
+    "chunk-CS2Z27NR": {
+      "file": "chunk-CS2Z27NR.js"
+    },
+    "chunk-VE5OM65L": {
+      "file": "chunk-VE5OM65L.js"
+    },
+    "chunk-5W2CEEWB": {
+      "file": "chunk-5W2CEEWB.js"
+    },
+    "chunk-ABLC2WDW": {
+      "file": "chunk-ABLC2WDW.js"
+    },
+    "chunk-EEVG2WDH": {
+      "file": "chunk-EEVG2WDH.js"
+    },
+    "chunk-WNTIHYJ3": {
+      "file": "chunk-WNTIHYJ3.js"
+    },
+    "chunk-W7S2ME4R": {
+      "file": "chunk-W7S2ME4R.js"
+    }
+  }
+}
