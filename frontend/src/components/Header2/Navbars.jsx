@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Logo from "../../images/logo1.png"
-
-export default function NavBar() {
+import { Link } from "react-router-dom";
+const  Navbars=()=> {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Función para alternar la visibilidad del menú en dispositivos móviles
@@ -31,12 +31,9 @@ export default function NavBar() {
           </div>
         </div>
         <div className="flex md:order-2">
-          <button
-            type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-lg px-4 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded-full ..."
-          >
-            Acceder
-          </button>
+              <Link className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-lg px-4 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded-full ..." to="/login">
+              Acceder
+            </Link>
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
@@ -73,38 +70,24 @@ export default function NavBar() {
           id="navbar-sticky"
         >
           <ul className="w-full flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-16 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-blue-400 dark:border-gray-700">
-          <li>
-              <a
-                href="#"
-                className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-               Inicio
-              </a>
-            </li>
-            <li>
-              <a
-                href="/MasInmueble"
-                className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-               Inmuebles
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Vender
-              </a>
-            </li>
-            <li>
-              <a
-                href="/Login"
-                className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Comprar
-              </a>
-            </li>
+          
+            <li>   
+              <Link className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/">
+              Inicio
+            </Link></li>
+            
+            <li>   
+              <Link className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="inmuebles">
+              Inmuebles
+            </Link></li>
+            <li>   
+              <Link className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/login">
+              Comprar
+            </Link></li>
+            <li>   
+              <Link className="block py-2.5 pl-3 pr-4 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue md:p-0 md:dark:hover:text-bluedark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" to="/login">
+              Vender
+            </Link></li>
           </ul>
         </div>
       </div>
@@ -112,3 +95,5 @@ export default function NavBar() {
     </>
   );
 }
+
+export default  Navbars;
