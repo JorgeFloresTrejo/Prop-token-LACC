@@ -1,7 +1,8 @@
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import Alerta from "../alertas/Alerta";
-import axios from 'axios';
+import clienteAxios from "../../config/axios";
+
 function Registrar() {
 
   const [nombre, setNombre] = useState("");  
@@ -32,8 +33,7 @@ function Registrar() {
 
     // Crear el usuario en la api
     try{
-      const url = 'http://localhost:4000/api/registrar';
-      await axios.post(url, {nombre, apellido, email, password, telefono});
+      await clienteAxios.post(`/registrar`, {nombre, apellido, email, password, telefono});
       //Si los datos se envían correctamente, seteamos un mensaje para el componente alerta
       setAlerta({msg: "Creado correctamente, Revisa tu email", error: false});
     }catch(error){
@@ -96,8 +96,8 @@ function Registrar() {
             </form>
 
             <nav className="mt-5 lg:flex justify-between">
-              <Link to="/" className="block text-center my-5 text-gray-600">¿Ya tienes una cuenta? Inicia sesión</Link>
-              <Link to="/olvide-password" className="block text-center my-5 text-gray-600">Olvide mi contraseña</Link>
+              <Link to="/login" className="block text-center my-5 text-gray-600">¿Ya tienes una cuenta? Inicia sesión</Link>
+              <Link to="/login/olvide-password" className="block text-center my-5 text-gray-600">Olvide mi contraseña</Link>
             </nav>
 
         </div>
