@@ -24,7 +24,7 @@ const emailRegistro = async (datos) =>{
             text: "Comprueba tu cuenta",
             html: `<p>Hola ${nombre}, Comprueba tu cuenta  </p>
                 <p> Tu cuenta ya está lista, solo debes comprobarla en el siguiente enlace:  
-                <a href="${process.env.FRONTEND_URL}/confirmar/${token}"> Comprobar cuenta </a> </p>
+                <a href="${process.env.FRONTEND_URL}/login/confirmar/${token}"> Comprobar cuenta </a> </p>
 
                 <p> Si tú no creaste esta cuenta, puedes ignorar este mensaje </p>
                 `
