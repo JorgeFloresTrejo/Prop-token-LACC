@@ -6,7 +6,7 @@ import Registrar from "./components/login/Registrar";
 import OlvidePassword from "./components/login/OlvidePassword";
 import ConfirmarCuenta from "./components/login/ConfirmarCuenta";
 import CrearInmueble from "./components/crearInmueble/CrearInmueble";
-import NuevoPassword from "./components/login/nuevoPassword";
+import NuevoPassword from "./components/login/NuevoPassword";
 
 import { AuthProvider } from "./context/AuthProvider";
 
