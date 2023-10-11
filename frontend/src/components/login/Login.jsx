@@ -41,24 +41,23 @@ const Login = () => {
 
   return (
     <>
-      
-      <div className="mt-20 md:mt-2 shadow-xl px-5 py-4 rounded-xl bg-white">
+      <div className="mx-8 mr-10 shadow-xl px-5 py-4 rounded-xl bg-gray-400">
 
-              {msg && <Alerta alerta={alerta}/>}
+        {msg && <Alerta alerta={alerta} />}
 
-            <form onSubmit={handleSubmit} className="mt-5">
-              <div className="my-7">
-                <label htmlFor="email"  className="uppercase text-gray-700 text-2xl block font-bold"> email </label>
-                <input type="email" placeholder="Email de registro" id="email" className="border w-full p-2 mt-3 bg-gray-200 rounded-xl" value={email} onChange={e => setEmail(e.target.value)}/>
-              </div>
+        <form onSubmit={handleSubmit} className="mt-5">
+          <div className="my-7">
+            <label htmlFor="email" className="uppercase text-gray-700 text-2xl block font-bold"> email </label>
+            <input type="email" placeholder="Email de registro" id="email"  autoComplete="Nombre" className="border w-full p-2 mt-3 bg-gray-200 rounded-xl" value={email} onChange={e => setEmail(e.target.value)} />
+          </div>
 
-              <div className="my-7">
-                <label htmlFor="pssword"  className="uppercase text-gray-600 text-2xl block font-bold"> contraseña </label>
-                <input type="password" placeholder="Tu contraseña" id="password" className="border w-full p-2 mt-3 bg-gray-200 rounded-xl" value={password} onChange={e => setPassword(e.target.value)}/>
-              </div>
+          <div className="my-7">
+            <label htmlFor="password" className="uppercase text-gray-600 text-2xl block font-bold"> contraseña </label>
+            <input type="password" placeholder="Tu contraseña" id="password"  autoComplete="Apellido" className="border w-full p-2 mt-3 bg-gray-200 rounded-xl" value={password} onChange={e => setPassword(e.target.value)} />
+          </div>
 
-              <input type="submit" value="Iniciar sesión" className="bg-indigo-700 w-full py-3 px-10 rounded-xl text-white uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-900 md:w-auto"/>
-            </form>
+          <input type="submit" value="Iniciar sesión" className="bg-indigo-700 w-full py-3 px-10 rounded-xl text-white uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-900 md:w-auto" />
+        </form>
 
 
         <nav className="mt-5 lg:flex justify-between">
@@ -77,7 +76,15 @@ const Login = () => {
         </nav>
       </div>
     </>
+      
+      
+    
+
+
   );
 };
+
+
+     
 
 export default Login;
