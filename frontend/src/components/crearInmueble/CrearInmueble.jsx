@@ -7,9 +7,7 @@ const CrearInmueble = () => {
   const [ubicacion, setUbicacion] = useState("");
   const [valor, setValor] = useState("");
   const [file, setFile] = useState([]);
-  const [token, setToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGI5YjczZjBhOGZmZmI3ZGU1MDA2MiIsImlhdCI6MTY5NTI1OTUzNywiZXhwIjoxNjk3ODUxNTM3fQ.iPhcH3DxgXSabMjVztaZZOVdMftPN0fX-F_F_v_VwiE"
-  );
+  const [token, setToken] = useState(localStorage.getItem('token'));
   const urlBackend = "http://localhost:4000/api/propiedades";
 
   //Manejar el submit y guardado a la base de datos
