@@ -14,6 +14,7 @@ function isLoggedIn(req, res, next) {
 //ruta principal
 router.get("/", (req, res) => {
   res.send("<a href='/auth/google'>Acceder con google</a>");
+  //res.send("/auth/google");
 });
 
 //ruta para iniciar la autentificación
@@ -36,11 +37,15 @@ router.get("/auth/failure", (req, res) => {
   res.send("Hay algo mal aquí..");
 });
 
-//Ruta protegidaque verifica si esta registrado
+// Ruta protegida que verifica si el usuario está autenticado
 router.get("/protected", isLoggedIn, (req, res) => {
   const { user } = req;
-  console.log("Perfil del usuario en /protected:", user);
-  res.send(`Hello usuario ${user.nombre} ${user.apellido}`);
+  if (user && user.accessToken) {
+    const accessToken = user.accessToken;
+    res.json({ accessToken });
+  } else {
+    res.status(401).json({ error: "No se encontró accessToken" });
+  }
 });
 
 //Cerrar sesión

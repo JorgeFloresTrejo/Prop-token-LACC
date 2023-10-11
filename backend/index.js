@@ -19,9 +19,9 @@ conectarDB();
 
 //Configuración del Cors - codigo en el paquete
 const dominioPermitidos = [process.env.FRONTEND_URL];
-const corsOpciones = {
-  // origin: "http://localhost:5173",
-  // methods: "GET,POST",
+/*const corsOpciones = {
+  //origin: "http://localhost:5173",
+  //methods: "GET,POST",
   origin: function (origin, callback) {
     // Si la url del frontend, donde se realiza la petición hacia la api esta en la lista de dominios permitidos
     //y es diferente a -1 (-1 significa que no lo encontro) entonces el Origen está permitido
@@ -34,7 +34,11 @@ const corsOpciones = {
   },
 };
 
-app.use(cors(corsOpciones));
+app.use(cors(corsOpciones));*/
+
+app.use(
+  cors({ origin: dominioPermitidos, methods: "GET,POST", credentials: true })
+);
 
 //Registrando el Routing
 app.use("/api", userRoutes);

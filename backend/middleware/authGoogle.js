@@ -14,10 +14,9 @@ const configureGoogleAuth = () => {
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: "http://localhost:4000/google/callback",
+        accessType: "offline",
       },
       async function (accessToken, refreshToken, profile, cb) {
-        console.log("Perfil de usuario de Google:", profile);
-
         try {
           let usuario = await User.findOne({ googleId: profile.id });
 
@@ -27,10 +26,20 @@ const configureGoogleAuth = () => {
               nombre: profile.name.givenName,
               apellido: profile.name.familyName,
               email: profile.emails[0].value,
+              accessToken: accessToken,
             });
             await usuario.save();
           }
-          return cb(null, usuario);
+
+          const user = {
+            googleId: profile.id,
+            nombre: profile.name.givenName,
+            apellido: profile.name.familyName,
+            email: profile.emails[0].value,
+            accessToken: accessToken, // Mantén el accessToken en la sesión
+          };
+
+          return cb(null, user);
         } catch (err) {
           return cb(err);
         }

@@ -1,23 +1,13 @@
-import React from "react";
-
 import Box from "./../../images/box.png";
 import Wallet from "./../../images/wallet.png";
 import Rendimiento from "./../../images/rendimientos.png";
 import Venta from "./../../images/venta.png";
 import Reinversion from "./../../images/reinversion.png";
-import Casa1 from "./../../images/casa1.jpg";
-import Casa2 from "./../../images/casa2.jpg";
-import Casa3 from "./../../images/casa3.jpg";
-import Casa4 from "./../../images/casa4.jpg";
-import Casa5 from "./../../images/casa5.jpg";
-import Casa6 from "./../../images/casa6.jpg";
-import Indicador from "./../../images/indicator.png";
 import Uno from "./../../images/1.png.png";
 import Dos from "./../../images/2.png.png";
 import Tres from "./../../images/3.png.png";
 
 import Card from "./Card/Card";
-import Inmueble from "../Inmuebles/Inmueble";
 import Facilidad from "./Facilidad/Facilidad";
 import MasInmueble from "./MasInmueble/MasInmueble";
 
@@ -25,172 +15,79 @@ import "./Inicio.css";
 import Imagen from "./ImagenHeader/Imagen";
 import Imgdeposito from "./ImagenDeposito/Imgdeposito";
 import FaqComponent from "./Fqa/Pregunta";
+import InmuebleFinal from "../InmuebleFinal/InmuebleFInal";
 
 const Inicio = () => {
   return (
     <>
       <Imagen />
-        <p className="ini">Invierte como los grandes gracias a la tecnología</p>
-        <div className="card">
-          <Card
-            imagen={Box}
-            titulo={"Búsqueda"}
-            descripcion={"Seleccionamos las mejores oportunidades para vender."}
-          />
-          <Card
-            imagen={Wallet}
-            titulo={"Tokenización"}
-            descripcion={
-              "Tokenizamos tu propiedad  para que cualquier inversor pueda articipar."
-            }
-          />
-          <Card
-            imagen={Rendimiento}
-            titulo={"Rendimiento"}
-            descripcion={"Repartimos rendimientos mensuales del alquiler."}
-          />
-          <Card
-            imagen={Venta}
-            titulo={"Venta final"}
-            descripcion={
-              "Vendemos el inmueble en el plazo marcado y repartimos plusvalías"
-            }
-          />
-          <Card
-            imagen={Reinversion}
-            titulo={"Reinversión"}
-            descripcion={
-              "Invierte tus rendimientos mensuales y multiplica el capital inicial invertido"
-            }
-          />
-        </div>
-        <div className="info-info">
-          <p>
-            Despreocúpate de todo proceso; búsqueda de inmuebles, firmas,
-            bancos, reformas, búsqueda de inquilino, gestione el día a día
-            PropToken LAC, lo hace todo por ti y tu tranquilida
-          </p>
-        </div>
-      
-      <div className="inmueble-inmueble flex">
-        
-        <div className="inmueble-inmueble_card w-full mx-8">
+      <p className="ini">Invierte como los grandes gracias a la tecnología</p>
+      <div className="card">
+        <Card
+          imagen={Box}
+          titulo={"Búsqueda"}
+          descripcion={"Seleccionamos las mejores oportunidades para vender."}
+        />
+        <Card
+          imagen={Wallet}
+          titulo={"Tokenización"}
+          descripcion={
+            "Tokenizamos tu propiedad  para que cualquier inversor pueda articipar."
+          }
+        />
+        <Card
+          imagen={Rendimiento}
+          titulo={"Rendimiento"}
+          descripcion={"Repartimos rendimientos mensuales del alquiler."}
+        />
+        <Card
+          imagen={Venta}
+          titulo={"Venta final"}
+          descripcion={
+            "Vendemos el inmueble en el plazo marcado y repartimos plusvalías"
+          }
+        />
+        <Card
+          imagen={Reinversion}
+          titulo={"Reinversión"}
+          descripcion={
+            "Invierte tus rendimientos mensuales y multiplica el capital inicial invertido"
+          }
+        />
+      </div>
+      <div className="info-info">
+        <p>
+          Despreocúpate de todo proceso; búsqueda de inmuebles, firmas, bancos,
+          reformas, búsqueda de inquilino, gestione el día a día PropToken LAC,
+          lo hace todo por ti y tu tranquilida
+        </p>
+      </div>
 
-        <div class="w-full p-2 text-center bg-blue-400 rounded-lg ">
-        <h2 class="text-white shadow-lg ">Lista destacadas</h2>
-        <h3 class="text-white text-shadow-md">Una colección seleccionada de nuestras propiedades</h3>
-        </div>
-        
-          <Inmueble
-            imagen={Casa1}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa2}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa3}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa4}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa5}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa6}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa6}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa5}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <div class="w-full p-2 text-center  rounded-lg ">
-          <a href="/inmuebles" className="ver-listado">
-          Ver listado
-        </a>
+      <div className="inmueble-inmueble flex">
+        <div className="inmueble-inmueble_card w-full mx-8">
+          <div className="w-full p-2 text-center bg-blue-400 rounded-lg">
+            <h2 className="text-white shadow-lg ">Lista destacadas</h2>
+            <h3 className="text-white text-shadow-md">
+              Una colección seleccionada de nuestras propiedades
+            </h3>
+          </div>
+          <div className="inmueblefinal-final-final">
+            <InmuebleFinal mostrarBoton={false} />
+          </div>
+
+          <div className="w-full p-2 text-center  rounded-lg ">
+            <a href="/inmuebles" className="ver-listado">
+              Ver listado
+            </a>
           </div>
         </div>
-        
       </div>
 
       <div className="facilidad-facilidad my-8">
-      <div class="w-full p-2 text-center  rounded-lg my-8">
-      <h6>¿Qué tan fácil es invertir?</h6>
-      </div>
-        
+        <div className="w-full p-2 text-center  rounded-lg my-8">
+          <h6>¿Qué tan fácil es invertir?</h6>
+        </div>
+
         <div className="facilidad-card-flex">
           <Facilidad
             imagen={Uno}
@@ -213,12 +110,9 @@ const Inicio = () => {
         </a>
       </div>
       <Imgdeposito />
-      <div className="mas-inmuebles">
-        <MasInmueble imagen={Casa2} ubicacion="Chalatenago" precio="50,000" />
-        <MasInmueble imagen={Casa2} ubicacion="Chalatenago" precio="50,000" />
-        <MasInmueble imagen={Casa2} ubicacion="Chalatenago" precio="50,000" />
-      </div>
-      <FaqComponent/>
+      <MasInmueble />
+
+      <FaqComponent />
     </>
   );
 };

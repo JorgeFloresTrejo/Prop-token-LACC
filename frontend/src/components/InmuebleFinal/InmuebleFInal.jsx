@@ -1,119 +1,71 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Inmueble from "./../Inmuebles/Inmueble";
-import Casa1 from "./../../images/casa1.jpg";
-import Casa2 from "./../../images/casa2.jpg";
-import Casa3 from "./../../images/casa3.jpg";
-import Casa4 from "./../../images/casa4.jpg";
-import Casa5 from "./../../images/casa5.jpg";
-import Casa6 from "./../../images/casa6.jpg";
 import Indicador from "./../../images/indicator.png";
+import axios from "axios";
+import "./InmuebleFinal.css";
 
-const InmuebleFinal = () => {
+const InmuebleFinal = ({ mostrarBoton }) => {
+  const [items, setItems] = useState([]);
+  const [mostrarItems, setMostrarItems] = useState([]);
+  const [indice, setIndice] = useState(0);
+  const itemPagina = 3;
+  const urlBackend = "http://localhost:4000/api/propiedades/";
+  //const [token, setToken] = useState(localStorage.getItem("token"));
+  //const headers = {
+  //Authorization: `Bearer ${token}`,
+  //};
+
+  useEffect(() => {
+    axios
+      .get(urlBackend)
+      .then((response) => {
+        setItems(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    setMostrarItems((indicePrevio) => [
+      ...indicePrevio,
+      ...items.slice(indice, indice + itemPagina),
+    ]);
+  }, [items, indice]);
+
+  const cargarMasInmuebles = () => {
+    setIndice(indice + itemPagina);
+  };
   return (
     <>
       <div className="inmueble-inmueble">
-        <div className="inmueble-inmueble_card">
-          <Inmueble
-            imagen={Casa1}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa2}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa3}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa4}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa5}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa6}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa6}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-          <Inmueble
-            imagen={Casa5}
-            ubicacion="El cuco, San Miguel"
-            precio="56903"
-            token="100"
-            fecha_inicio="12/4/2023"
-            indicador={Indicador}
-            rendimiento="11"
-            rendimiento_porce="11"
-            renta="1200"
-            extencion="1220"
-          />
-        </div>
-        <a href="#" className="ver-listado">
-          paginación
-        </a>
+        {mostrarItems.map((item, index) => (
+          <div className="inmueble-inmueble_card" key={index}>
+            <Inmueble
+              imagen={item.imagenUrl[0]}
+              ubicacion={item.ubicacion}
+              precio={item.valor}
+              token="100"
+              fecha_inicio="12/4/2023"
+              indicador={Indicador}
+              rendimiento="11"
+              rendimiento_porce="11"
+              renta="1200"
+              extencion="1220"
+            />
+          </div>
+        ))}
       </div>
+      {items.length > mostrarItems.length && mostrarBoton && (
+        <div className="flex justify-center">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full center"
+            onClick={cargarMasInmuebles}
+          >
+            Mostrar más
+          </button>
+        </div>
+      )}
     </>
   );
 };

@@ -14,6 +14,7 @@ import Inicio from "./components/Inicio/Inicio";
 import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal";
 import InicioLayout from "./layout/InicioLayout";
 import SessionMenu from "./components/SessionMenu/SessionMenu";
+import Google from "./components/login/Google";
 
 function App() {
   return (
@@ -25,14 +26,20 @@ function App() {
               <Route index element={<Login />} />
               <Route path="registrar" element={<Registrar />} />
               <Route path="olvide-password" element={<OlvidePassword />} />
-              <Route path="olvide-password/:token" element={<NuevoPassword />}/>
+              <Route
+                path="olvide-password/:token"
+                element={<NuevoPassword />}
+              />
               <Route path="confirmar/:id" element={<ConfirmarCuenta />} />
+              <Route path="google" element={<Google />} />
             </Route>
-
             {/* Vistas que no necesitan loggearse */}
             <Route path="/" element={<InicioLayout />}>
               <Route index element={<Inicio />} />
-              <Route path="inmuebles" element={<InmuebleFinal />} />
+              <Route
+                path="inmuebles"
+                element={<InmuebleFinal mostrarBoton={true} />}
+              />
             </Route>
 
             {/**Vistas que necesitan logearse */}
