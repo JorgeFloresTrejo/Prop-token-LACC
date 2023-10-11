@@ -8,7 +8,10 @@ const Google = () => {
   }, []);
   useEffect(() => {
     // Captura el token de la URL después de la redirección
+    console.log("hola");
     const autenticacionConGoogle = async () => {
+      console.log("hola1");
+
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get("accessToken");
@@ -27,7 +30,11 @@ const Google = () => {
 
   return (
     <div>
-      <p>Redirigiendo a la autenticación de Google...</p>
+      {accessToken ? (
+        <div>Autenticación exitosa. Token de acceso: {accessToken}</div>
+      ) : (
+        <p>Redirigiendo a la autenticación de Google...</p>
+      )}
     </div>
   );
 };
