@@ -39,7 +39,7 @@ const Inmueble = (props) => {
           <p>Extención</p>
           <p>{props.extencion} m</p>
         </div>
-        <a href="/login" className="ver-mas">
+        <a href="/vistainmuebles" className="ver-mas">
           Ver más
         </a>
       </div>

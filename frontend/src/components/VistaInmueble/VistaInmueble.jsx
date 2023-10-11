@@ -8,59 +8,72 @@ import Descripcion from '../../images/Descripcion.png';
 import Documentos from '../../images/Documentos.png';
 import Localizacion from '../../images/Localizacion.png';
 import finan from '../../images/finan.png';
+import sv from '../../images/el-salvador.png'
 
 const VistaInmueble = () => {
+
   const [infoVisible, setInfoVisible] = useState(false);
-  const [infoTexto, setInfoTexto] = useState('');
+  const [infoContent, setInfoContent] = useState('');
 
-  const mostrarInfo = (texto) => {
-    setInfoTexto(texto);
+  function mostrarInfo(info) {
+    setInfoContent(info);
     setInfoVisible(true);
-  };
+  }
 
-  const ocultarInfo = () => {
+  function ocultarInfo() {
     setInfoVisible(false);
-  };
-
+  }
+  
   return (
     <div className="containera">
-      <div className="carousel-container">
-        <Carousel className="caru">
-          <div className="mage">
-            <img src={casa} alt="Imagen 1" />
-            <p className="legend">Descripción de la imagen 1</p>
-          </div>
-          <div className="mage">
-            <img src={casa} alt="Imagen 2" />
-            <p className="legend">Descripción de la imagen 2</p>
-          </div>
-          <div className="mage">
-            <img src={casa} alt="Imagen 3" />
-            <p className="legend">Descripción de la imagen 3</p>
-          </div>
-          <div className="mage">
-            <img src={casa} alt="Imagen 4" />
-            <p className="legend">Descripción de la imagen 4</p>
-          </div>
-        </Carousel>
-      </div>
-      <div className="content-container">
+
+      <Carousel className="caru">
+        <div className="mage">
+          <img className="img-carousel" src={casa} alt="Descripción de la imagen 1" />
+          <p className="legend">Descripción de la imagen 1</p>
+        </div>
+        <div className="mage">
+          <img className="img-carousel" src={casa} alt="Descripción de la imagen 2" />
+          <p className="legend">Descripción de la imagen 2</p>
+        </div>
+        <div className="mage">
+          <img className="img-carousel" src={casa} alt="Descripción de la imagen 3" />
+          <p className="legend">Descripción de la imagen 3</p>
+        </div>
+        <div className="mage">
+          <img className="img-carousel" src={casa} alt="Descripción de la imagen 4" />
+          <p className="legend">Descripción de la imagen 4</p>
+        </div>
+      </Carousel>
+
+      <div className="content-container"> 
+
         <div className="cardmueble">
-          <h2>El Cuco, San Miguel.</h2>
+
+          <h2 className='titulo'>El Cuco, San Miguel.</h2>
+
           <div className="conp">
-            <p className="cuco" style={{ display: 'inline', marginRight: '10px' }}>
-              BUR-1
+
+            <p className="cuco" style={{ display: 'inline', }}>
+              El salvador
+              <img src={sv} className='salvador' style={{ display: 'inline', verticalAlign: 'middle' }} />
             </p>
+
             <p className="finan" style={{ display: 'inline' }}>
-              FINANCIADO<img className="finans" src={finan} alt="Datos del token" />
+              FINANCIADO
+              <img src={finan} className='salvador' style={{ display: 'inline', verticalAlign: 'middle' }} />
             </p>
+
           </div>
+
           <div className="centro">
             <p className="precioreal" style={{ display: 'inline' }}>
-              $ 56903
+              $ 56,903
             </p>
           </div>
+
           <div className="precio-container">
+
             <div className="izquierda">
               <p className="precio">Precio Token</p>
               <br />
@@ -75,6 +88,7 @@ const VistaInmueble = () => {
               <p className="precio">Rendimientos</p>
               <br />
             </div>
+
             <div className="derecha">
               <p className="precio">$ 99.99</p>
               <br />
@@ -89,37 +103,48 @@ const VistaInmueble = () => {
               <p className="precio">6193.05</p>
               <br />
             </div>
+
           </div>
+
         </div>
+
+        <div className="w-3/5  border-gray-200 border-dashed rounded-lg dark:border-gray-700  m-5">
         <div className="datosmostrar">
+        
+
           <div className="enlace" onClick={() => mostrarInfo("Información de Descripción")}>
-            <a href="">Descripción</a>
+            <li href="">Descripción</li>
             <img className="token" src={Descripcion} alt="Descripción" />
           </div>
+
           <div className="enlace" onClick={() => mostrarInfo("Locación del activo")}>
-            <a className='loca' href="https://www.google.com/maps/place/13%C2%B010'30.5%22N+88%C2%B006'39.8%22W/@13.174998,-88.120209,15z/data=!4m13!1m8!3m7!1s0x8f7ade1a2c6c32d9:0xde170765b8fa0e95!2sEl+Cuco!3b1!8m2!3d13.1743298!4d-88.1108325!16s%2Fg%2F1tfcd79x!3m3!8m2!3d13.175124!4d-88.111046?entry=ttu">
+            <li href="" className='loca' >
               Localización
-            </a>
+            </li>
             <img className="token" src={Localizacion} alt="Localización" />
           </div>
+
           <div className="enlace" onClick={() => mostrarInfo("Información de Datos del Token")}>
-            <a href="">Datos del token</a>
+            <li href="">Datos del token</li>
             <img className="token" src={token} alt="Datos del token" />
           </div>
+
           <div className="enlace" onClick={() => mostrarInfo("Información de Documentos")}>
-            <a href="">Documentos</a>
+            <li href="">Documentos</li>
             <img className="token" src={Documentos} alt="Documentos" />
           </div>
-          {infoVisible && (
-            <div className='hola'>
-              <div className="info-container">
-                <p>{infoTexto}</p>
-              </div>
-            </div>
-          )}
         </div>
+        
+        {infoVisible && (
+          <div className="informacion">
+            <p>{infoContent}</p>
+            <button onClick={ocultarInfo} >Cerrar</button>
+          </div>
+        )}
+      </div>
       </div>
     </div>
+
   );
 };
 

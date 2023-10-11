@@ -15,6 +15,14 @@ import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal";
 import InicioLayout from "./layout/InicioLayout";
 import SessionMenu from "./components/SessionMenu/SessionMenu";
 import Google from "./components/login/Google";
+import InicioKyc from "./components/Kyc/InicioKyc/Iniciokyc";
+import InfoTest from "./components/Kyc/Info/InfoTest";
+import Financiero from "./components/Kyc/Financiero/Financiero";
+import Documentos from "./components/Kyc/Documentos/DocAnverso";
+import ValidarData from "./components/Kyc/ValidarData/ValidarData";
+import WalletMenu from "./components/SessionMenu/WalletMenu";
+import MainKyc from "./components/Kyc/MainKyc/Mainkyc";
+import VistaInmueble from "./components/VistaInmueble/VistaInmueble";
 
 function App() {
   return (
@@ -40,6 +48,16 @@ function App() {
                 path="inmuebles"
                 element={<InmuebleFinal mostrarBoton={true} />}
               />
+              <Route path="inmuebles" element={<InmuebleFinal />} />
+              <Route path="inicio-kyc" element={<InicioKyc />} />
+              <Route path="infoTest-kyc" element={<InfoTest />} />
+              <Route path="financiero-kyc" element={<Financiero />} />
+              <Route path="documento-kyc" element={<Documentos />} />
+              <Route path="Validar-kyc" element={<ValidarData />} />
+              <Route path="sesion" element={<SessionMenu />} />
+              <Route path="wallet-menu" element={<WalletMenu />} />
+              <Route path="main-kyc" element={<MainKyc />} />
+              <Route path="vistainmuebles" element={<VistaInmueble />} />
             </Route>
 
             {/**Vistas que necesitan logearse */}
@@ -49,6 +67,11 @@ function App() {
                 path="propiedades/registrar/"
                 element={<CrearInmueble />}
               />
+              <Route path="inicio-kyc" element={<InicioKyc />} />
+              <Route path="infoTest-kyc" element={<InfoTest />} />
+              <Route path="financiero-kyc" element={<Financiero />} />
+              <Route path="documento-kyc" element={<Documentos />} />
+              <Route path="Validar-kyc" element={<ValidarData />} />
             </Route>
           </Routes>
         </AuthProvider>
