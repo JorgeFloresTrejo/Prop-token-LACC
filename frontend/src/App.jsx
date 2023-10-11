@@ -14,6 +14,7 @@ import Inicio from "./components/Inicio/Inicio";
 import InmuebleFinal from "./components/InmuebleFinal/InmuebleFInal";
 import InicioLayout from "./layout/InicioLayout";
 import SessionMenu from "./components/SessionMenu/SessionMenu";
+import VistaInmueble from "./components/VistaInmueble/VistaInmueble";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<InicioLayout />}>
               <Route index element={<Inicio />} />
               <Route path="inmuebles" element={<InmuebleFinal />} />
+              <Route path="vistainmuebles" element={<VistaInmueble/>} />
             </Route>
 
             {/**Vistas que necesitan logearse */}
