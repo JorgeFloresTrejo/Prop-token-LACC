@@ -50,7 +50,7 @@ const Login = () => {
 
       {/* <!-- Right column container --> */}
       <div class="mb-20 mt-32 ml-20 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12  bg-opacity-25 rounded-xl ">
-        <form>
+        <form onClick={handleSubmit}>
           {/* <!--Sign in section--> */}
           <div class="flex flex-row items-center justify-center lg:justify-start">
             <p class="mb-0 mr-4 text-lg font-bold">Inicia sesión con</p>

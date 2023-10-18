@@ -2,30 +2,41 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+import { Link } from 'react-router-dom';
+
 const CrearInmueble = () => {
   const [descripcion, setDescripcion] = useState("");
   const [ubicacion, setUbicacion] = useState("");
   const [valor, setValor] = useState("");
   const [file, setFile] = useState([]);
+  const [imageURLs, setImageURLs] = useState([]);
   const [token, setToken] = useState(localStorage.getItem('token'));
   const urlBackend = "http://localhost:4000/api/propiedades";
 
-  //Manejar el submit y guardado a la base de datos
+  const handleFileChange = (e) => {
+    const files = e.target.files;
+    setFile(files);
+
+    // Create an array of image URLs to display them
+    const urls = [];
+    for (let i = 0; i < files.length; i++) {
+      urls.push(URL.createObjectURL(files[i]));
+    }
+    setImageURLs(urls);
+  };
+
   const manejarSubmit = async (e) => {
     e.preventDefault();
 
-    //Lamada asincrona
     await upload();
   };
-  //Subir la imagen al drive
+
   const upload = async () => {
-    console.log("Array: ", file);
     const formData = new FormData();
 
     for (let i = 0; i < file.length; i++) {
       formData.append("files", file[i]);
     }
-    console.log(...formData);
 
     try {
       Swal.fire({
@@ -41,18 +52,15 @@ const CrearInmueble = () => {
         "http://localhost:4000/api/upload",
         formData
       );
-      //Verificar si la respuesta contiene la Url de la imagen
+
       if (response.data && response.data.imageUrl) {
         const urls = response.data.imageUrl;
-        //setImagenUrls(urls);
         console.log("urls: ", urls);
-        //Crear las credenciales
+
         const headers = {
           Authorization: `Bearer ${token}`,
         };
 
-        // console.log("ImageUrl", imagenUrl);
-        //Crear una propiedad
         const nuevaPropiedad = {
           descripcion,
           ubicacion,
@@ -62,15 +70,13 @@ const CrearInmueble = () => {
 
         await axios.post(urlBackend, nuevaPropiedad, { headers });
 
-        // Limpiar todos los inputs
         setDescripcion("");
         setUbicacion("");
         setValor("");
-        setFile("");
+        setFile([]);
+        setImageURLs([]); // Clear the displayed images
 
-        // Cerrar el mensaje de carga
         Swal.close();
-        //Agregamos el mensaje de exito
         Swal.fire({
           position: "center",
           icon: "success",
@@ -82,19 +88,20 @@ const CrearInmueble = () => {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Ocurrio un error al guardar en BD",
+          text: "Ocurrió un error al guardar en BD",
         });
       }
     } catch (er) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Ocurrio un error al guardar imagen enviada por file",
+        text: "Ocurrió un error al guardar imagen enviada por file",
       });
 
       console.log(er);
     }
   };
+
   return (
     <>
       <form className="w-full max-w-md" onSubmit={manejarSubmit}>
@@ -156,36 +163,45 @@ const CrearInmueble = () => {
           htmlFor="dropzone-file"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
         >
-          Imagénes
+          Imágenes
         </label>
+
         <div className="flex items-center justify-center w-full">
           <label
             htmlFor="dropzone-file"
-            className="flex flex-col items-center justify-center w-full h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            className="flex flex-col items-center justify-center w-full h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover-bg-gray-800 dark-bg-gray-700 hover-bg-gray-100 dark-border-gray-600 dark-hover-border-gray-500 dark-hover-bg-gray-600"
           >
-            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-              <svg
-                className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 16"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                />
-              </svg>
-              <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                <span className="font-semibold">Click para subir</span>
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                SVG, PNG, JPG or GIF (MAX. 800x400px) Máximo 6
-              </p>
-            </div>
+            {imageURLs.length > 0 ? (
+              imageURLs.map((url, index) => (
+                <img key={index} src={url} alt={`Image ${index}`} style={{ maxWidth: "500px", maxHeight: "300px" }} />
+              ))
+            ) : (
+              <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg
+                  className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 16"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                  />
+                </svg>
+
+                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="font-semibold">Click para subir</span>
+                </p>
+
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  SVG, PNG, JPG or GIF (MAX. 800x400px) Máximo 6
+                </p>
+              </div>
+            )}
             <input
               id="dropzone-file"
               type="file"
@@ -194,18 +210,20 @@ const CrearInmueble = () => {
               accept="image/*"
               multiple
               required={true}
-              onChange={(e) => {
-                setFile(e.target.files);
-              }}
+              onChange={handleFileChange}
             />
           </label>
         </div>
+
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-8"
+          className="text-white bg-blue-700 hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 font-medium rounded-lg text-sm w-1/2 sm-w-auto px-5 py-2.5 text-center dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800 my-8"
         >
           Guardar propiedad
         </button>
+
+        <Link to="/"
+          className="text-white bg-blue-700 hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 font-medium rounded-lg text-sm w-full sm-w-auto px-5 py-2.5 text-center dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800 my-8 ml-2">Ir a la página de inicio</Link>
       </form>
     </>
   );

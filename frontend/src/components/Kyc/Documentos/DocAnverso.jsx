@@ -87,12 +87,14 @@ function Documentos() {
             <img src={anverso} alt="anverso1" />
             <p>Imagen Anversa</p>
           </div>
+
           <input
             type="file"
             accept="image/*"
             id="image-upload1"
             onChange={handleImageUpload}
           />
+          
           {imagePreview && (
             <div className="image-preview1">
               <img src={imagePreview}
