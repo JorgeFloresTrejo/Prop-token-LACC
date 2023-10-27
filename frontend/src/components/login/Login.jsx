@@ -117,6 +117,30 @@ const Login = () => {
               </svg>
               <span class="text-gray-700 font-medium">Acceder con Google</span>
             </button>
+
+            <Link to="/"
+          className="flex items-center mb-2 justify-center transition ease-in-out delay-50 px-3 py-2.5 space-x-2 bg-blue-200 border border-slate-600 rounded-md hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 focus:ring-opacity-50 ml-6">
+
+<svg
+                viewBox="0 0 48 48"
+                width="24"
+                height="24"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                fill="#000000"
+              >
+                
+                
+                        <svg class="h-3 w-3 text-red-500"  width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> 
+                         <path stroke="none" d="M0 0h24v24H0z"/>  
+                         <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />  
+                         <path d="M20 12h-13l3 -3m0 6l-3 -3" />
+                         </svg>
+                      
+              </svg>
+              <span class="text-gray-700 font-medium">Volver Inicio</span>
+          </Link>
           </div>
 
           {/* <!-- Separator between social media sign in and email/password sign in --> */}

@@ -29,7 +29,9 @@ const VistaInmueble = () => {
 
       <Carousel className="caru">
         <div className="mage">
+          
           <img className="img-carousel" src={casa} alt="Descripción de la imagen 1" />
+
           <p className="legend">Descripción de la imagen 1</p>
         </div>
         <div className="mage">
