@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const CrearInmueble = () => {
   const [descripcion, setDescripcion] = useState("");
@@ -10,7 +10,7 @@ const CrearInmueble = () => {
   const [valor, setValor] = useState("");
   const [file, setFile] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const urlBackend = "http://localhost:4000/api/propiedades";
 
   const handleFileChange = (e) => {
@@ -173,7 +173,12 @@ const CrearInmueble = () => {
           >
             {imageURLs.length > 0 ? (
               imageURLs.map((url, index) => (
-                <img key={index} src={url} alt={`Image ${index}`} style={{ maxWidth: "500px", maxHeight: "300px" }} />
+                <img
+                  key={index}
+                  src={url}
+                  alt={`Image ${index}`}
+                  style={{ maxWidth: "500px", maxHeight: "300px" }}
+                />
               ))
             ) : (
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -222,8 +227,12 @@ const CrearInmueble = () => {
           Guardar propiedad
         </button>
 
-        <Link to="/"
-          className="text-white bg-blue-700 hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 font-medium rounded-lg text-sm w-full sm-w-auto px-5 py-2.5 text-center dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800 my-8 ml-2">Ir a la página de inicio</Link>
+        <Link
+          to="/admin"
+          className="text-white bg-blue-700 hover-bg-blue-800 focus-ring-4 focus-outline-none focus-ring-blue-300 font-medium rounded-lg text-sm w-full sm-w-auto px-5 py-2.5 text-center dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800 my-8 ml-2"
+        >
+          Ir a la página de inicio
+        </Link>
       </form>
     </>
   );

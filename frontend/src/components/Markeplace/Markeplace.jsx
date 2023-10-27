@@ -1,0 +1,1 @@
+import MarkeplaceContract from "./../../../contracts";
