@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./SessionMenu.css";
-import Loga from "../../images/logo1.png";
 import WalletConnect from "../WalletConnect/WalletConnect";
-import Web3 from "web3";
 import logo from "../../images/logo.jpeg";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Web3 from "web3";
 
+  
 const SessionMenu = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [Metamask, setMetamask] = useState(false);
@@ -17,7 +17,7 @@ const SessionMenu = () => {
   const conectarWallet = async () => {
     if (typeof window.ethereum !== "undefined") {
       const web3Instance = new Web3(window.ethereum);
-      //     /**----------------------------------------- */
+      
       try {
         await window.ethereum.enable();
         //obteniendo la cuenta

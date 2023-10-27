@@ -6,6 +6,7 @@ import clienteAxios from "../../config/axios";
 import sesion from "../../images/sesion.jpg";
 
 const Login = () => {
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState({});
@@ -16,7 +17,7 @@ const Login = () => {
     e.preventDefault();
 
     // Si la contraseña o el email vienen vacíos se manda un mensaje
-    if ([email, password].includes("")) {
+    if ([email, password].includes('')) {
       setAlerta({
         msg: "No se permiten campos vacíos",
         error: true,
@@ -50,7 +51,7 @@ const Login = () => {
 
       {/* <!-- Right column container --> */}
       <div class="mb-20 mt-32 ml-20 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12  bg-opacity-25 rounded-xl ">
-        <form onClick={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           {/* <!--Sign in section--> */}
           <div class="flex flex-row items-center justify-center lg:justify-start">
             <p class="mb-0 mr-4 text-lg font-bold">Inicia sesión con</p>

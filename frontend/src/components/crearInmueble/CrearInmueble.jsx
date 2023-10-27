@@ -3,6 +3,12 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 import { Link } from 'react-router-dom';
+import Web3 from "web3";
+import PropiedadNFT from '../../../build/contracts/PropiedadNFT.json'; 
+import Marketplace from '../../../build/contracts/Marketplace.json'; 
+
+const CONTRACT_ADDRESS = "0x30F36E21147BB59fc12319881269aA155345080d"; // Reemplaza con la dirección de tu contrato
+const CONTRACT_ABI = PropiedadNFT.abi; 
 
 const CrearInmueble = () => {
   const [descripcion, setDescripcion] = useState("");
@@ -57,33 +63,55 @@ const CrearInmueble = () => {
         const urls = response.data.imageUrl;
         console.log("urls: ", urls);
 
-        const headers = {
-          Authorization: `Bearer ${token}`,
-        };
+        // Conectar a la red blockchain usando Web3
+        if (window.ethereum) {
+          const web3 = new Web3(window.ethereum);
+          await window.ethereum.enable(); // permiso al usuario para acceder a la cuenta
 
-        const nuevaPropiedad = {
-          descripcion,
-          ubicacion,
-          valor,
-          imagenUrl: urls,
-        };
+          // Obtener la dirección del remitente (sender)
+          const accounts = await web3.eth.getAccounts();
 
-        await axios.post(urlBackend, nuevaPropiedad, { headers });
+          const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
-        setDescripcion("");
-        setUbicacion("");
-        setValor("");
-        setFile([]);
-        setImageURLs([]); // Clear the displayed images
+          // llamada al contrato para crear una propiedad en la blockchain
+          const result = await contract.methods.crearPropiedad(descripcion, ubicacion, valor, urls).send({ from: accounts[0] });
 
-        Swal.close();
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Creada la propiedad con éxito",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+          console.log("Transacción completada:", result);
+
+          const headers = {
+            Authorization: `Bearer ${token}`,
+          };
+
+          const nuevaPropiedad = {
+            descripcion,
+            ubicacion,
+            valor,
+            imagenUrl: urls,
+          };
+
+          await axios.post(urlBackend, nuevaPropiedad, { headers });
+
+          setDescripcion("");
+          setUbicacion("");
+          setValor("");
+          setFile([]);
+          setImageURLs([]); // Clear the displayed images
+
+          Swal.close();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Creada la propiedad con éxito",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "No se pudo conectar a la red blockchain. Asegúrate de que MetaMask esté instalado y configurado correctamente.",
+          });
+        }
       } else {
         Swal.fire({
           icon: "error",

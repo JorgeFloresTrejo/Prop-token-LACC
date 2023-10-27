@@ -23055,12 +23055,12 @@
         }
       },
       "links": {},
-      "address": "0x2A73080ecA06d1Cc550299e7dA84f15d134A34D8",
-      "transactionHash": "0x13148f8eb88ca5207b6745432ab232833c92804a08cff8e468cac557c4e0353f"
+      "address": "0x0f2371E6dd4FBa81DA1c6CdD3F2BeB948fe860C9",
+      "transactionHash": "0x01e412a7ab1eba103fc63592b01a94b070a0ff81d9d6c636339034036da78fb9"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-10-26T23:52:52.741Z",
+  "updatedAt": "2023-10-27T11:47:48.933Z",
   "networkType": "ethereum",
   "devdoc": {
     "events": {
